@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;900&family=Original+Surfer&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+}
+
+body {
+  /* background-color: #fff; */
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  margin: 0;
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ul li {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  padding-right: 3.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.3rem;
+  margin-bottom: 5rem;
+}
