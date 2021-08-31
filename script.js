@@ -66,6 +66,8 @@ setInterval(clock, 1000); // 1000 = 1s
 
 // ---------- End Clock ----------
 
+// ---------- New Year Countdown ----------
+
 const daysNewYearEl = document.querySelector(".new-year-days");
 const hoursNewYearEl = document.querySelector(".new-year-hours");
 const minutesNewYearEl = document.querySelector(".new-year-minutes");
@@ -100,3 +102,69 @@ const updateCountdown = () => {
 
 // Run every second
 setInterval(updateCountdown, 1000);
+
+// ---------- End New Year Countdown ----------
+
+// ---------- Water  app----------
+const smallCupsWaterEl = document.querySelectorAll(".cup-small");
+const litersWaterEl = document.getElementById("water-liters");
+const percentageWaterEl = document.getElementById("water-percentage");
+const remainedWaterEl = document.getElementById("water-remained");
+console.log(percentageWaterEl);
+
+updateBigCup();
+
+smallCupsWaterEl.forEach((cup, idx) => {
+  // console.log(cup, idx);
+  cup.addEventListener("click", () => highlightCups(idx));
+});
+
+function highlightCups(idx) {
+  const lastCup = smallCupsWaterEl.length - 1;
+
+  if (
+    smallCupsWaterEl[idx].classList.contains("full") &&
+    !smallCupsWaterEl[idx].nextElementSibling?.classList.contains("full")
+  ) {
+    idx--;
+  }
+
+  smallCupsWaterEl.forEach((cup, idx2) => {
+    if (idx2 <= idx) {
+      cup.classList.add("full");
+    } else {
+      cup.classList.remove("full");
+    }
+  });
+
+  updateBigCup();
+}
+
+function updateBigCup() {
+  const fullCupsWaterEl = document.querySelectorAll(".cup-small.full").length;
+  console.log(fullCupsWaterEl);
+  const totalCupsWater = smallCupsWaterEl.length;
+
+  if (fullCupsWaterEl === 0) {
+    percentageWaterEl.style.visibility = "hidden";
+    percentageWaterEl.style.height = 0;
+  } else {
+    percentageWaterEl.style.visibility = "visible";
+    percentageWaterEl.style.height = `${
+      (fullCupsWaterEl / totalCupsWater) * 200
+    }px`;
+    percentageWaterEl.innerText = `${
+      (fullCupsWaterEl / totalCupsWater) * 100
+    }%`;
+  }
+
+  if (fullCupsWaterEl === totalCupsWater) {
+    remainedWaterEl.style.visibility = "hidden";
+    remainedWaterEl.style.height = 0;
+  } else {
+    remainedWaterEl.style.visibility = "visible";
+    litersWaterEl.innerText = `${2 - (250 * fullCupsWaterEl) / 1000}L`;
+  }
+}
+
+// ---------- End Water app ----------
