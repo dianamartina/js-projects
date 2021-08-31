@@ -1,3 +1,10 @@
+// --------- Spinner ---------
+const loading = document.querySelector(".loading");
+const main = document.querySelector(".main");
+setTimeout(() => {
+  loading.remove();
+  main.style.display = "block";
+}, 1000);
 // ---------- Clock ----------
 const hourEl = document.querySelector(".clock-hour");
 const minuteEl = document.querySelector(".clock-minutes");
@@ -81,6 +88,7 @@ const updateCountdown = () => {
   const minutesNewYear = Math.floor(diffTime / 1000 / 60) % 60;
   const secondsNewYear = Math.floor(diffTime / 1000) % 60;
 
+  // Adding values to DOM
   daysNewYearEl.innerHTML = daysNewYear;
   hoursNewYearEl.innerHTML =
     hoursNewYear < 10 ? "0" + hoursNewYear : hoursNewYear;
@@ -90,4 +98,5 @@ const updateCountdown = () => {
     secondsNewYear < 10 ? "0" + secondsNewYear : secondsNewYear;
 };
 
+// Run every second
 setInterval(updateCountdown, 1000);
