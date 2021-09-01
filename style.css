@@ -15,6 +15,8 @@ html {
 
 :root {
   --white-color: #fff;
+  --white-color-dark: #ececf3;
+  --white-color-dark2: #d1d1e6;
   --primary-color-dark: #0d0329;
   --primary-color: #1c0950;
   --primary-color-light: #3b2575;
@@ -22,6 +24,8 @@ html {
   --secondary-color-light: #22c8e5;
   --tertiary-color: #de2c52;
   --tertiary-color-light: #f3446a;
+  --box-shadow: -6px -6px 16px var(--white-color), 6px 6px 16px #d1d1e6,
+    inset 6px 6px 16px #d1d1e6, inset -6px -6px 16px var(--white-color);
 }
 
 body {
@@ -56,7 +60,7 @@ ul li {
 
 .main {
   display: none;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .loading {
@@ -68,7 +72,7 @@ ul li {
 
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
   column-gap: 3.5rem;
   row-gap: 5rem;
   margin-bottom: 5rem;
@@ -76,7 +80,7 @@ ul li {
 }
 
 .box {
-  min-width: 28rem;
+  /* min-width: 29.2rem; */
   width: 100%;
   padding: 1.4rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -99,7 +103,7 @@ ul li {
 
 .btn {
   border: none;
-  background-color: rgb(247, 247, 247);
+  background-color: var(--white-color-dark);
   color: var(--primary-color);
   border-radius: 3px;
   font-size: 1.3rem;
@@ -114,7 +118,7 @@ ul li {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(236, 236, 243);
+  background-color: var(--white-color-dark);
   padding: 2rem;
 }
 
@@ -122,10 +126,7 @@ ul li {
   position: relative;
   width: 200px;
   height: 200px;
-  box-shadow: -6px -6px 16px var(--white-color),
-    6px 6px 16px hsla(240, 30%, 86%, 1),
-    inset 6px 6px 16px hsla(240, 30%, 86%, 1),
-    inset -6px -6px 16px var(--white-color);
+  box-shadow: var(--box-shadow);
   border-radius: 50%;
   justify-self: center;
   display: flex;
@@ -173,7 +174,7 @@ ul li {
   height: 11px;
   background-color: var(--primary-color);
   border-radius: 50%;
-  border: 2px solid rgb(236, 236, 243);
+  border: 2px solid var(--white-color-dark);
   position: relative;
   z-index: 10;
 }
@@ -567,10 +568,83 @@ ul li {
 
 /* ---------- End Guess number---------- */
 
+/* ----------  Piano---------- */
+
+.piano-box {
+  background-color: var(--white-color-dark);
+  display: flex;
+  justify-content: center;
+}
+
+.piano {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+.piano-key {
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+.piano-white {
+  width: 3.8rem;
+  height: 15rem;
+  background-color: var(--white-color);
+  border: 1px solid var(--white-color-dark2);
+}
+
+.piano-white span {
+  display: flex;
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--white-color-dark2);
+  bottom: 0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.piano-white.active {
+  background-color: var(--white-color-dark);
+}
+
+.piano-black {
+  width: 2.5rem;
+  height: 10rem;
+  background-color: var(--primary-color-dark);
+  margin: 0 -1.25rem;
+  z-index: 2;
+}
+
+.piano-black.active {
+  background-color: var(--primary-color);
+}
+
+.piano-black span {
+  display: flex;
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* ----------  End Piano---------- */
+
+/* ****************** Media query **************** */
+
 /* ---------- Breakpoint 576px- big phones ---------- */
 @media (max-width: 48em) {
   html {
     /* we set it to 8px / 16px = 0.50 = 50% */
     font-size: 50%;
+  }
+
+  .container {
+    padding: 0 1.5rem;
   }
 }

@@ -239,3 +239,47 @@ againGuessEl.addEventListener("click", function () {
   guessNumberEl.style.backgroundColor = "";
   guessInputEl.style.borderColor = "";
 });
+
+// ----------  End Guess number----------
+
+// ----------  Piano----------
+
+const WHITE_KEYS = ["z", "x", "c", "v", "b", "n", "m"];
+const BLACK_KEYS = ["s", "d", "g", "h", "j"];
+
+const keysPianoEl = document.querySelectorAll(".piano-key");
+const whiteKeysPianoEl = document.querySelectorAll(".piano-white");
+const blackKeysPianoEl = document.querySelectorAll(".piano-black");
+
+// Play on click
+keysPianoEl.forEach((key) => {
+  key.addEventListener("click", () => {
+    playNote(key);
+  });
+});
+
+// Play on keypress
+document.addEventListener("keydown", (e) => {
+  if (e.repeat)
+    return; /* if the key is holding pressed the sound will work only once */
+
+  const key = e.key; /* get the letter */
+
+  // Take the index of each letter pressed
+  const whiteKeyIndex = WHITE_KEYS.indexOf(key);
+  const blackKeyIndex = BLACK_KEYS.indexOf(key);
+  if (whiteKeyIndex > -1) playNote(whiteKeysPianoEl[whiteKeyIndex]);
+  if (blackKeyIndex > -1) playNote(blackKeysPianoEl[blackKeyIndex]);
+});
+
+function playNote(key) {
+  const noteAudio = document.getElementById(key.dataset.note);
+  noteAudio.currentTime = 0; /* play from the begining at each click */
+  noteAudio.play();
+  key.classList.add("active");
+  noteAudio.addEventListener("ended", () => {
+    key.classList.remove("active");
+  });
+}
+
+// ----------  End Piano----------
