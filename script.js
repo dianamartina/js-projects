@@ -110,7 +110,7 @@ const smallCupsWaterEl = document.querySelectorAll(".cup-small");
 const litersWaterEl = document.getElementById("water-liters");
 const percentageWaterEl = document.getElementById("water-percentage");
 const remainedWaterEl = document.getElementById("water-remained");
-console.log(percentageWaterEl);
+// console.log(percentageWaterEl);
 
 updateBigCup();
 
@@ -142,7 +142,7 @@ function highlightCups(idx) {
 
 function updateBigCup() {
   const fullCupsWaterEl = document.querySelectorAll(".cup-small.full").length;
-  console.log(fullCupsWaterEl);
+  // console.log(fullCupsWaterEl);
   const totalCupsWater = smallCupsWaterEl.length;
 
   if (fullCupsWaterEl === 0) {
@@ -168,3 +168,74 @@ function updateBigCup() {
 }
 
 // ---------- End Water app ----------
+
+// ----------  Guess number----------
+
+const checkGuessEl = document.querySelector(".guess-number-check");
+const againGuessEl = document.querySelector(".guess-number-again");
+const scoreGuessEl = document.querySelector(".guess-number-score");
+const highscoreGuessEl = document.querySelector(".guess-number-highscore");
+const guessNumberEl = document.querySelector(".guess-number");
+const guessInputEl = document.querySelector(".guess");
+
+//Generate secret number
+let secretNumberGuess = Math.trunc(Math.random() * 20) + 1;
+let scoreGuess = 20;
+let highscoreGuess = 0;
+
+//For developing - show secret number
+// document.querySelector(".guess-number-secret").textContent = secretNumberGuess;
+
+//Check the input number
+checkGuessEl.addEventListener("click", function () {
+  const guessEl = Number(document.querySelector(".guess").value);
+  let messageGuessEl = document.querySelector(".guess-number-message");
+
+  console.log(messageGuessEl);
+  console.log(guessEl);
+
+  // Check the number
+
+  /* Check if there is no input */
+  if (!guessEl) {
+    messageGuessEl.textContent = "No number!";
+
+    /* Player wins */
+  } else if (guessEl === secretNumberGuess) {
+    messageGuessEl.textContent = "Correct answer!";
+    guessNumberEl.style.backgroundColor = "#3b2575";
+    document.querySelector(".guess-number-secret").textContent =
+      secretNumberGuess;
+    guessInputEl.style.borderColor = "#22c8e5";
+
+    if (scoreGuess > highscoreGuess) {
+      highscoreGuess = scoreGuess;
+      highscoreGuessEl.textContent = highscoreGuess;
+    }
+
+    /* Check if the number is different then the secret */
+  } else if (guessEl !== secretNumberGuess) {
+    if (scoreGuess > 1) {
+      messageGuessEl.textContent =
+        guessEl > secretNumberGuess ? "Too high!" : "Too low!";
+      scoreGuess--;
+      scoreGuessEl.textContent = scoreGuess;
+    } else {
+      messageGuessEl.textContent = "Game over!";
+      scoreGuessEl.textContent = 0;
+    }
+  }
+});
+
+//Restore game
+againGuessEl.addEventListener("click", function () {
+  secretNumberGuess = Math.trunc(Math.random() * 20) + 1;
+  scoreGuess = 20;
+  document.querySelector(".guess-number-message").textContent =
+    "Start guessing...";
+  document.querySelector(".guess-number-secret").textContent = "?";
+  scoreGuessEl.textContent = "20";
+  document.querySelector(".guess").value = "";
+  guessNumberEl.style.backgroundColor = "";
+  guessInputEl.style.borderColor = "";
+});

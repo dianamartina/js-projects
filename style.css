@@ -15,6 +15,7 @@ html {
 
 :root {
   --white-color: #fff;
+  --primary-color-dark: #0d0329;
   --primary-color: #1c0950;
   --primary-color-light: #3b2575;
   --secondary-color: #1d8193;
@@ -47,11 +48,10 @@ ul li {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
-  padding-right: 3.5rem;
+  padding: 0 3rem;
 }
 
 .main {
@@ -68,9 +68,11 @@ ul li {
 
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  column-gap: 3.5rem;
+  row-gap: 5rem;
   margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
 .box {
@@ -94,6 +96,18 @@ ul li {
   font-size: 1.8rem;
   margin: 1rem 0;
 }
+
+.btn {
+  border: none;
+  background-color: rgb(247, 247, 247);
+  color: var(--primary-color);
+  border-radius: 3px;
+  font-size: 1.3rem;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 /* ---------- Clock ---------- */
 .clock-date-app {
   display: flex;
@@ -293,7 +307,6 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(236, 236, 243);
   padding: 2rem;
 }
 
@@ -350,10 +363,6 @@ ul li {
   color: var(--secondary-color);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3),
     inset 0px 5px 10px hsla(240, 30%, 93%, 1);
-  /* box-shadow: -6px -6px 16px var(--white-color),
-    6px 6px 16px hsla(240, 30%, 86%, 1),
-    inset 6px 6px 16px hsla(240, 30%, 86%, 1),
-    inset -6px -6px 16px var(--white-color); */
 }
 
 .water-cups {
@@ -394,4 +403,174 @@ ul li {
   background-color: var(--white-color);
 }
 
-/* ---------- End Water app ---------- */ ;
+/* ---------- End Water app ---------- */
+
+/* ----------  Guess number---------- */
+.guess-number {
+  background-color: var(--primary-color-dark);
+
+  color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guess-number-top {
+  background-image: url("./images/background-numbers.svg");
+  background-repeat: repeat;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+.guess-number-again {
+  background: var(--primary-color-dark);
+  border: 1px solid var(--secondary-color-light);
+  color: var(--secondary-color-light);
+
+  margin: 2rem 2rem 0rem auto;
+  transition: all 0.3s;
+}
+
+.guess-number-again:hover {
+  border: 1px solid var(--secondary-color-light);
+  background-color: var(--secondary-color-light);
+  color: var(--primary-color);
+}
+
+.guess-number-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.guess-number-secret {
+  width: 7rem;
+  height: 8rem;
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  font-size: 4.5rem;
+  font-weight: 900;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-number-title-box {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guess-number-title {
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.guess-number-title-box span {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+}
+
+.guess-number-text {
+  background: #eee;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.guess-number-bottom {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 2rem 5rem;
+  position: relative;
+}
+.guess-number-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 5rem;
+}
+
+.guess {
+  width: 7rem;
+  height: 5rem;
+  border-radius: 4px;
+  background: transparent;
+  border: 1.5px solid var(--tertiary-color);
+  font-family: inherit;
+  color: inherit;
+  font-size: 3rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.guess-number-check {
+  border: 1px solid var(--secondary-color-light);
+  background-color: var(--secondary-color-light);
+  color: var(--primary-color);
+  transition: all 0.3s;
+  width: 7rem;
+}
+
+.guess-number-check:hover {
+  background: transparent;
+  border: 1px solid var(--secondary-color-light);
+  color: var(--secondary-color-light);
+}
+
+.guess-number-right {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+}
+.guess-number-message {
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  color: var(--secondary-color-light);
+}
+
+.guess-number-score-box {
+  position: absolute;
+  bottom: 1rem;
+  right: 4rem;
+}
+.guess-number-label-score {
+  margin-bottom: 0.4rem;
+  font-size: 1.6rem;
+}
+.guess-number-label-highscore {
+  margin-top: 0.4rem;
+}
+
+/* ---------- End Guess number---------- */
+
+/* ---------- Breakpoint 576px- big phones ---------- */
+@media (max-width: 48em) {
+  html {
+    /* we set it to 8px / 16px = 0.50 = 50% */
+    font-size: 50%;
+  }
+}
