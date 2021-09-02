@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -34,7 +36,7 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
-  height: 100vh;
+
   margin: 0;
   /* display: flex;
   align-items: center;
@@ -79,26 +81,28 @@ ul li {
   margin-top: 5rem;
 }
 
-.box {
-  /* min-width: 29.2rem; */
-  width: 100%;
-  padding: 1.4rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  display: flex;
-  flex-direction: column;
+.heading-primary {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 2rem 0 2rem;
 }
 
-.paragraph-box {
-  font-size: 1.6rem;
-  padding: 1rem 1.6rem;
-  margin-bottom: 1rem;
-  line-height: 1.5;
+.heading-secondary {
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
 }
 
 .heading-tertiary {
-  font-weight: 500;
   font-size: 1.8rem;
+  font-weight: 600;
   margin: 1rem 0;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  max-width: 70rem;
 }
 
 .btn {
@@ -112,14 +116,105 @@ ul li {
   cursor: pointer;
 }
 
+.btn-source-code:link,
+.btn-source-code:visited {
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+.btn-source-code:hover,
+.btn-source-code:active {
+  border: 1px solid var(--secondary-color-light);
+  background-color: var(--secondary-color-light);
+}
+
+/* ---------- Box general elements--------- */
+.box {
+  /* min-width: 29.2rem; */
+  width: 100%;
+  padding: 1.4rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.technologies {
+  display: flex;
+  gap: 1rem;
+}
+
+.technology-item {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  padding: 0.1rem 0.5rem;
+}
+
+.item-primary {
+  color: var(--primary-color);
+}
+.item-secondary {
+  color: var(--secondary-color);
+}
+.item-tertiary {
+  color: var(--tertiary-color);
+}
+
+.paragraph-box {
+  font-size: 1.6rem;
+  padding: 1rem 1.6rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.btn-read-more {
+  padding-bottom: 1px;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  background: none;
+  cursor: pointer;
+  margin: 2rem 0 1rem;
+  /* transition: all 0.3 ease; */
+}
+
+.btn-read-more:hover {
+  color: var(--secondary-color);
+}
+
+.btn-read-more:hover + .read-more {
+  display: block;
+}
+
+.read-more {
+  position: relative;
+}
+
+.read-more-extended {
+  background-color: var(--white-color);
+  position: absolute;
+  opacity: 0.96;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.read-more {
+  display: none;
+}
+
+/* ---------- End Box general elements--------- */
+
 /* ---------- Clock ---------- */
+
+.clock-description {
+  margin-bottom: 2rem;
+}
+
 .clock-date-app {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: var(--white-color-dark);
   padding: 2rem;
+  height: 100%;
 }
 
 .clock-circle {
@@ -132,6 +227,7 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 4rem;
 }
 
 .clock-twelve,
@@ -227,6 +323,7 @@ ul li {
 
 .clock-time {
   font-size: 4rem;
+  margin-bottom: 2rem;
 }
 
 .clock-date {
@@ -254,6 +351,11 @@ ul li {
 /* ---------- End Clock ---------- */
 
 /* ---------- New Year Countdown ---------- */
+
+.new-year-description {
+  margin-bottom: 2rem;
+}
+
 .new-year-app {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
     url("https://images.unsplash.com/photo-1521356279905-e1d72a443574?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
@@ -268,6 +370,8 @@ ul li {
   gap: 1.4rem;
   text-align: center;
   position: relative;
+  height: 100%;
+  padding: 2rem;
 }
 
 .new-year-time {
@@ -290,12 +394,17 @@ ul li {
   z-index: 1;
   opacity: 0.3;
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 2rem;
 }
 
 /* ---------- End New Year Countdown ---------- */
 
 /* ---------- Water app ---------- */
+
+.water-description {
+  margin-bottom: 2rem;
+}
+
 .water-app {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.7),
@@ -309,6 +418,7 @@ ul li {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  height: 100%;
 }
 
 .water-remained {
@@ -325,6 +435,7 @@ ul li {
 .water-remained span {
   font-size: 1.3rem;
   font-weight: 500;
+  margin-bottom: 0.15rem;
 }
 
 .water-remained small {
@@ -354,13 +465,14 @@ ul li {
 
 .water-cup {
   background-color: var(--white-color);
-  border: 1.3px solid var(--primary-color-light);
+  border: 2px solid var(--secondary-color);
   border-radius: 3px 3px 20px 20px;
   height: 200px;
   width: 80px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
   color: var(--secondary-color);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3),
     inset 0px 5px 10px hsla(240, 30%, 93%, 1);
@@ -376,6 +488,7 @@ ul li {
 .water-cup.cup-small {
   width: 30px;
   height: 50px;
+  border: 1.3px solid var(--secondary-color);
   border-radius: 2px 2px 10px 10px;
   cursor: pointer;
   font-size: 1.2rem;
@@ -407,6 +520,11 @@ ul li {
 /* ---------- End Water app ---------- */
 
 /* ----------  Guess number---------- */
+.guess-number-description {
+  margin-bottom: 2rem;
+  /* position: relative; */
+}
+
 .guess-number {
   background-color: var(--primary-color-dark);
 
@@ -414,14 +532,14 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .guess-number-top {
   background-image: url("./images/background-numbers.svg");
   background-repeat: repeat;
-
   width: 100%;
-  height: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
@@ -570,10 +688,16 @@ ul li {
 
 /* ----------  Piano---------- */
 
+.piano-description {
+  margin-bottom: 2rem;
+}
+
 .piano-box {
   background-color: var(--white-color-dark);
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .piano {
@@ -634,6 +758,17 @@ ul li {
   transform: translateX(-50%);
 }
 /* ----------  End Piano---------- */
+
+.footer {
+  background-color: var(--white-color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paragraph-footer {
+  padding: 2rem;
+}
 
 /* ****************** Media query **************** */
 
