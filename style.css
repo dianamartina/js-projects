@@ -770,6 +770,14 @@ ul li {
   padding: 2rem;
 }
 
+.logo-DM {
+  height: 1.8rem;
+  width: auto;
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding-left: 0.4rem;
+}
+
 /* ****************** Media query **************** */
 
 /* ---------- Breakpoint 576px- big phones ---------- */
